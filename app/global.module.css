@@ -1,0 +1,33 @@
+.row {
+  display: flex;
+  margin-left: 7%;
+  margin-right: 7%;
+  justify-content: space-around;
+}
+
+.column {
+  flex: 50%;
+  margin: 7%;
+}
+
+.topnavbar {
+  position: fixed;  /* Fix the navbar's position relative to the viewport */
+  top: 0;           /* Position at the top of the page */
+  left: 0;          /* Stretch from the left edge */
+  width: 100%;      /* Extend across the full width of the viewport */
+  background: white;/* Set the background color to white */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: add shadow for better visibility */
+  padding: 10px 20px; /* Add some padding around the links */
+  z-index: 1000;   /* Ensure the navbar is above other content */
+  display: flex;   /* Use flexbox for easy horizontal layout */
+  justify-content: space-around; /* Distribute space between links */
+}
+
+.topnavbar > * {
+  flex: 1; /* Make all child elements take equal space */
+  text-align: center; /* Center the text within each element */
+}
+
+.topnavbar h1:hover {
+  color: #555; /* Change color on hover */
+}
