@@ -24,7 +24,7 @@ export default function Infoboard() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'discord',
       options: {
-        redirectTo: `https://epic-collection.vercel.app/auth/callback`,
+        redirectTo: `${window.location.origin}`,
         scopes: 'identify',
       },
     })
