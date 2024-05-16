@@ -29,7 +29,10 @@ export async function GET(request: Request) {
     )
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) {
-      return NextResponse.redirect(`${origin}${next}`)
+      const host = request.headers.get('Host')
+      const protocol = request.headers.get('X-Forwarded-Proto') || 'http'
+      const redirectUrl = `${protocol}://${host}${next}`
+      return NextResponse.redirect(redirectUrl)
     }
   }
 
