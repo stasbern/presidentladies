@@ -132,7 +132,9 @@ export default function Infoboard() {
                         wordWrap: 'break-word'
                       }}
                     >
-                      <Image src={"/img.png"} alt="cool image" width="256" height="256" />
+                      <div style={{width: "100%"}}>
+                        <Image src={"/img.png"} alt="cool image" width="256" height="256"  />
+                      </div>
                       <div className='flex flex-col'>
                         <div className="mr-4 py-2">fumar</div>
                         <div className="mr-4 py-2">seen:</div>
