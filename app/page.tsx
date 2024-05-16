@@ -104,6 +104,12 @@ export default function Infoboard() {
 
   return (
     <div>
+      <link
+        rel="icon"
+        href="/icon?<generated>"
+        type="image/<generated>"
+        sizes="<generated>"
+      />
       <div className={styles.topnavbar}>
         <h1>ready to become epic?</h1>
         {session ? (
