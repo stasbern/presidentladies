@@ -105,11 +105,13 @@ export default function Infoboard() {
   return (
     <div>
       <div className={styles.topnavbar}>
-        <h1 onClick={signOut}>Y'all'll be rugged</h1>
+        <h1>ready to become epic?</h1>
         {session ? (
           <>
             <h1>hello, {session.user.user_metadata.full_name}</h1>
-            <button onClick={() => { signOut(); window.location.reload(); }}>Logout</button>
+            <div>
+              <button className='mx-2 cursor-pointer px-2' onClick={() => { signOut(); window.location.reload(); }}>Logout</button>
+            </div>
           </>
         ) : (
           <button onClick={signInWithDiscord}>Sign in with Discord</button>
@@ -135,10 +137,10 @@ export default function Infoboard() {
                       <div style={{width: "100%"}}>
                         <Image src={"/img.png"} alt="cool image" width="256" height="256"  />
                       </div>
-                      <div className='flex flex-col'>
-                        <div className="mr-4 py-2">fumar</div>
-                        <div className="mr-4 py-2">seen:</div>
-                        <div className="mr-4 py-2">6.9h ago</div>
+                      <div className='flex flex-col justify-center'>
+                        <div className="mr-4 py-2">l</div>
+                        <div className="mr-4 py-2">f</div>
+                        <div className="mr-4 py-2">g</div>
                       </div>
                     </div>
                   )}

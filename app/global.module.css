@@ -28,6 +28,7 @@
   text-align: center; /* Center the text within each element */
 }
 
-.topnavbar h1:hover {
-  color: #555; /* Change color on hover */
+.topnavbar button:hover {
+  color: #ffffff;
+  background-color: #555;
 }
