@@ -114,7 +114,9 @@ export default function Infoboard() {
             </div>
           </>
         ) : (
-          <button onClick={signInWithDiscord}>Sign in with Discord</button>
+          <div>
+            <button className='mx-2 cursor-pointer px-2' onClick={signInWithDiscord}>Sign in with Discord</button>
+          </div>
         )}
       </div>
       <Device>
@@ -134,26 +136,36 @@ export default function Infoboard() {
                         wordWrap: 'break-word'
                       }}
                     >
-                      <div style={{width: "100%"}}>
-                        <Image src={"/img.png"} alt="cool image" width="256" height="256"  />
+                      <div style={{ width: "50%" }}> {/* Adjusted from 75% to 50% */}
+                        <Image src={"/img.png"} alt="cool image" width="256" height="256" />
                       </div>
-                      <div className='flex flex-col justify-center'>
-                        <div className="mr-4 py-2">l</div>
-                        <div className="mr-4 py-2">f</div>
-                        <div className="mr-4 py-2">g</div>
+                      <div className='flex flex-col justify-center' style={{ width: "50%" }}> {/* Explicitly set to 50% */}
+                        <div className="mr-4 py-2 text-center">l</div>
+                        <div className="mr-4 py-2 text-center">f</div>
+                        <div className="mr-4 py-2 text-center">g</div>
                       </div>
                     </div>
                   )}
                 </WindowHeader>
+
                 <WindowHeader title="random info">
                   {(props) => (
                     <div className='backdrop-hue-rotate-90 backdrop-blur-sm border-2 p-2 text-white' style={{ backdropFilter: 'blur(4px)', borderWidth: '2px', padding: '1rem', borderColor: props.bgColor }}>
-                      <h1 className='py-1'>do stuff on this page</h1>
-                      <h1 className='py-1 flex flex-row'>gather <h1 className='text-purple-400'>&nbsp;points</h1></h1>
-                      <h1 className='py-1'>gathered enough - get <h1 className='flex flex-row'> access to <h1 className='text-indigo-600'>&nbsp;discord</h1></h1></h1>
-                      <h1 className='py-1 flex flex-row'><h1 className=' text-indigo-600'>discord</h1>&nbsp;access - OG</h1>
-                      <h1 className='py-1 flex flex-row'>OG - <h1 className='text-yellow-400'>&nbsp;Free mint</h1></h1>
+                      <h1 className='py-1'>Do stuff on this page</h1>
+                      <div className='py-1 flex flex-row items-center flex-wrap'>
+                        Gather <span className='text-purple-400'>&nbsp;points</span>
+                      </div>
+                      <div className='py-1 flex flex-row items-center flex-wrap'>
+                        Gathered enough - get access to <span className='text-indigo-600'>&nbsp;Discord</span>
+                      </div>
+                      <div className='py-1 flex flex-row items-center flex-wrap'>
+                        <span className='text-indigo-600'>Discord</span>&nbsp;access - OG
+                      </div>
+                      <div className='py-1 flex flex-row items-center flex-wrap'>
+                        OG - <span className='text-yellow-400'>&nbsp;Free mint</span>
+                      </div>
                     </div>
+
                   )}
                 </WindowHeader>
               </div>
