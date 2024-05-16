@@ -34,14 +34,6 @@ export default function Infoboard() {
     }
   }
 
-  async function validate() {
-    var valid = WAValidator.validate('bc1pxhzuj3frsugrvl75lafwscmpv8uv06htdr7vszzvtxqt0mnd08gqwapeaf', 'BTC');
-    if (valid)
-      console.log('This is a valid address');
-    else
-      console.log('Address INVALID');
-  }
-
   async function signOut() {
     const { error } = await supabase.auth.signOut()
   }
