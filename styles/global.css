@@ -2,4 +2,5 @@ body {
     background-image: url("../public/background.gif");
     background-size:cover;
     background-attachment: fixed;
+    min-height: 100vh;
 }
