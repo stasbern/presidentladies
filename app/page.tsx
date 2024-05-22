@@ -133,7 +133,7 @@ export default function Infoboard() {
                       <Image src={"/img.png"} alt="cool image" width="256" height="256" />
                     </div>
                     <div className='flex flex-col justify-center' style={{ width: "50%" }}> {/* Explicitly set to 50% */}
-                      <div className="mr-4 py-2 text-center">Coming soon &nbsp;...</div>
+                      <a className="mr-4 py-2 text-center underline" href='https://docs.google.com/spreadsheets/d/1LvWBK4dovcZiKxNzMMDqQkUJ1pCX4PlWGORtSIAR0sc/edit#gid=0'>OG List</a>
                     </div>
                   </div>
                 )}
