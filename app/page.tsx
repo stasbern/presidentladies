@@ -5,11 +5,11 @@ import { createClient } from '@/utils/supabase/client';
 import styles from './global.module.css'
 import '../styles/global.css'
 import { WindowHeader } from '../components/WindowHeader';
-import { Comment } from '../components/Comment';
 import Device from '../components/Device'
 import { Session, User } from '@supabase/supabase-js';
 var WAValidator = require('multicoin-address-validator');
 import Image from 'next/image'
+import useSWR from 'swr';
 
 export default function Infoboard() {
   const [comments, setComments] = useState<{ id: string; content: string; discord_username: string; created_at: string, btc_address: string }[]>([])
@@ -19,6 +19,41 @@ export default function Infoboard() {
   const [session, setSession] = useState<Session | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const { data: holderData, error: holderError } = useSWR('/lists/WL.json', fetcher);
+  const { data: ogData, error: ogError } = useSWR('/lists/OG.json', fetcher);
+  console.log('holderData:', holderData);
+  console.log('ogData:', ogData);
+  const [Message, setMSG] = useState(<p className="sm:text-xl text-lg text-white">Paste Your Address</p>);
+
+  const isAddressInList = (list: string[] | undefined, address: string) => {
+    let lowerList = list?.map(acc => acc.toLowerCase()) ?? [];
+    let lowerAddress = address.toLowerCase();
+    return lowerList.includes(lowerAddress);
+  };
+
+  const HandleCheck = (addr: string) => {
+    if (typeof addr !== 'string' || addr.length === 0) {
+      setMSG(<p className="sm:text-xl text-lg text-white">Paste Your Address</p>);
+      return;
+    }
+
+    if (addr.length < 42) {
+      setMSG(<p className="sm:text-xl text-lg text-orange-500">Not a valid address</p>);
+      return;
+    }
+
+    let useradd = addr.toLowerCase();
+
+    if (isAddressInList(ogData, useradd)) {
+      setMSG(<p className="sm:text-xl text-lg">OG</p>);
+    } else if (isAddressInList(holderData, useradd)) {
+      setMSG(<p className="sm:text-xl text-lg">Whitelisted</p>);
+    } else {
+      setMSG(<p className="sm:text-xl text-lg">Not Whitelisted</p>);
+    }
+  };
 
   async function signInWithDiscord() {
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -101,7 +136,6 @@ export default function Infoboard() {
     }
   };
 
-
   return (
     <div>
       <link
@@ -120,7 +154,7 @@ export default function Infoboard() {
               <WindowHeader title="Epic collection">
                 {(props) => (
                   <div
-                    className="flex flex-row backdrop-hue-rotate-90 backdrop-blur-sm border-2 p-2 text-white"
+                    className="flex flex-row backdrop-blur-sm border-2 p-2 text-white"
                     style={{
                       backdropFilter: "blur(4px)",
                       borderWidth: "2px",
@@ -138,10 +172,37 @@ export default function Infoboard() {
                   </div>
                 )}
               </WindowHeader>
+              <WindowHeader title='Wallet Checker'>
+                {(props) => (
+                  <div
+                    className="flex flex-col backdrop-blur-sm border-2 p-2 text-white h-full"
+                    style={{
+                      backdropFilter: "blur(4px)",
+                      borderWidth: "2px",
+                      padding: "1rem",
+                      borderColor: props.bgColor,
+                      wordWrap: 'break-word'
+                    }}
+                  >
+                    <div className="flex-grow flex flex-col space-y-5 justify-center items-center">
+                      <input
+                        className="w-full text-black p-3 focus:outline-2 focus:outline-slate-400 caret-slate-500 rounded-md"
+                        type="text"
+                        placeholder="Paste Your Address to check"
+                        onChange={(e) => {
+                          e.preventDefault();
+                          HandleCheck(e.target.value);
+                        }}
+                      />
+                      {Message}
+                    </div>
+                  </div>
+                )}
+              </WindowHeader>
             </div>
           </div>
         )}
       </Device>
     </div>
   );
-} 
+}
