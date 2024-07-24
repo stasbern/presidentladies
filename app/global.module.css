@@ -1,34 +1,66 @@
-.row {
-  display: flex;
-  margin-left: 7%;
-  margin-right: 7%;
-  justify-content: space-around;
+.container {
+  max-width: 800px;
+  margin: 60px auto 0;
+  background-color: #001f3f; /* Dark blue background */
+  padding: 20px;
 }
 
-.column {
-  flex: 50%;
-  margin: 7%;
+.window {
+  border: 2px solid #ffffff; /* White border */
+  margin-bottom: 20px;
+  overflow: hidden; /* This will remove any gap between header and content */
+}
+
+.window-header {
+  background-color: #0a3d62; /* Darker blue for header */
+  color: #ffffff; /* White text */
+  padding: 5px 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Courier New', monospace; /* For that retro look */
+}
+
+.window-content {
+  background-color: #3c3c3c; /* Dark gray content area */
+  color: #ffffff; /* White text */
+  padding: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border: none;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+}
+
+.message {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
 }
 
 .topnavbar {
-  position: fixed;  /* Fix the navbar's position relative to the viewport */
-  top: 0;           /* Position at the top of the page */
-  left: 0;          /* Stretch from the left edge */
-  width: 100%;      /* Extend across the full width of the viewport */
-  background: white;/* Set the background color to white */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: add shadow for better visibility */
-  padding: 10px 20px; /* Add some padding around the links */
-  z-index: 1000;   /* Ensure the navbar is above other content */
-  display: flex;   /* Use flexbox for easy horizontal layout */
-  justify-content: space-around; /* Distribute space between links */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #b22234; /* Red from the American flag */
+  padding: 10px 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
 }
 
-.topnavbar > * {
-  flex: 1; /* Make all child elements take equal space */
-  text-align: center; /* Center the text within each element */
-}
-
-.topnavbar button:hover {
+.topnavbar h1 {
   color: #ffffff;
-  background-color: #555;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 24px;
 }
+
+/* Add more styles as needed */

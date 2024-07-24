@@ -1,33 +1,39 @@
-import '../app/globals.css'
 import React, { useState, useEffect } from 'react';
 
-const colorClasses = [
-  '#3490dc',
-  '#6574cd',
-  '#9561e2',
-  '#f66d9b',
-  '#f6993f'
+// Define color classes for the outline inspired by the American flag: red, white, and blue
+const outlineColorClasses = [
+  '#b22234', // Red (similar to the American flag red)
+  '#ffffff', // White
+  '#3c3b6e', // Blue (similar to the American flag blue)
 ];
 
-interface WindowHeader {
+// Fixed background color
+const fixedBgColor = '#1a2b3c'; // Dark blue for background
+
+interface WindowHeaderProps {
   title: string;
   children: (props: { bgColor: string }) => React.ReactNode;
 }
 
-export const WindowHeader: React.FC<WindowHeader> = ({ title, children }) => {
-  const [bgColor, setBgColor] = useState('');
+export const WindowHeader: React.FC<WindowHeaderProps> = ({ title, children }) => {
+  const [borderColor, setBorderColor] = useState('');
 
   useEffect(() => {
-    setBgColor(colorClasses[Math.floor(Math.random() * colorClasses.length)]);
+    // Set a random border color from the outlineColorClasses array
+    setBorderColor(outlineColorClasses[Math.floor(Math.random() * outlineColorClasses.length)]);
   }, []);
 
+  // Text color remains consistent for readability
+  const textColor = '#ffffff';
+
   return (
-    <div style={{ borderColor: bgColor, marginTop: '1.25rem', padding: '0.25rem' }}>
-      <div style={{ backgroundColor: bgColor, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1 style={{ color: 'black', marginLeft: '0.5rem', fontSize: '1.25rem' }}>{title}</h1>
-        <h1 style={{ color: 'black', marginRight: '0.25rem', fontSize: '1.25rem'}}>_ x</h1>
+    <div className="border-2 mt-5 overflow-hidden" style={{ borderColor: borderColor }}>
+      <div className="flex justify-between items-center px-2 py-1" style={{ backgroundColor: fixedBgColor }}>
+        <h1 className="font-medium" style={{ color: textColor }}>{title}</h1>
+        <div className="flex space-x-1">
+        </div>
       </div>
-      {children({ bgColor })}
+      {children({ bgColor: fixedBgColor })}
     </div>
   );
 };

@@ -1,7 +1,9 @@
 body {
-    background-image: url("../public/background.gif");
+    /* background-image: url("../public/background1.gif"); */
+    background-color: black;
     background-size:cover;
     background-attachment: scroll;
     background-repeat: no-repeat;
     min-height: 100vh;
+    font-size: larger;
 }
