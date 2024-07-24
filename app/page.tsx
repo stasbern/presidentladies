@@ -5,12 +5,8 @@ import { useState, useEffect } from 'react'
 import styles from './global.module.css'
 import '../styles/global.css'
 import { WindowHeader } from '../components/WindowHeader';
-import Device from '../components/Device'
-import { Session, User } from '@supabase/supabase-js';
-var WAValidator = require('multicoin-address-validator');
 import Image from 'next/image'
 import Link from 'next/link'
-import useSWR from 'swr';
 
 export default function Infoboard() {
   return (
